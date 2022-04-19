@@ -1,4 +1,4 @@
 name: SimpleDropInventory
-main: net.shibacraft.SimpleDropInventory
+main: net.shibacraft.simpledropinventory.SimpleDropInventory
 version: '${v}'
 author: SKJOLBERG

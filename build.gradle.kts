@@ -33,7 +33,7 @@ tasks {
         options.encoding = "UTF-8"
     }
     shadowJar {
-        delete(file("C:\\Users\\danie\\IdeaProjects\\SimpleDropInventory\\build"))
+        delete(file("${project.buildDir}"))
         archiveClassifier.set("")
         archiveFileName.set("${project.name}-${project.version}.jar")
         minimize()

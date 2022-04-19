@@ -1,2 +1,2 @@
-rootProject.name = "SimpleDropInventory"
+rootProject.name = "Spigot-Default"
 
