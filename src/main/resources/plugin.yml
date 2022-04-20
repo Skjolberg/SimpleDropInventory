@@ -7,4 +7,4 @@ permissions:
     description: Allows all admin permissions
     default: op
   sdi.use:
-    description: Allows you to use the command to drop items to the inventory.
+    description: Allows you to use the command to drop items to the inventory
