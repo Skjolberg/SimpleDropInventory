@@ -1,6 +1,6 @@
 name: SimpleDropInventory
 main: net.shibacraft.simpledropinventory.SimpleDropInventory
-version: '${v}'
+version: '0.0.1-SNAPSHOT'
 author: SKJOLBERG
 permissions:
   sdi.admin:

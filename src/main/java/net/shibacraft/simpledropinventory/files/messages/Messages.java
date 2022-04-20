@@ -12,7 +12,9 @@ public enum Messages {
     PREFIX("PREFIX", "&8[&dSimpleDropInventory&8]&r "),
     INVALID_ARGUMENT("INVALID_ARGUMENT", "&cThe argument %s is Invalid."),
     NO_PERMISSION("NO_PERMISSION", "&cYou do not have permission to do this."),
-    RELOAD("RELOAD", "&aPlugin reloaded!");
+    RELOAD("RELOAD", "&aPlugin reloaded!"),
+    DROP_ON("DROP_ON", "&aYou will now receive the items in your inventory!"),
+    DROP_OFF("DROP_OFF", "&cYou will not receive the items in the inventory!");
 
     @Getter
     private final String path;
@@ -24,10 +26,6 @@ public enum Messages {
     @Getter
     private static boolean Prefix = true;
 
-    /**
-     * Returns a simple message setting colours and prefix.
-     * @return String
-     */
     public String get(){
         return Prefix ? TextColor.color(PREFIX.getValue() + this.value) : TextColor.color(this.value);
     }

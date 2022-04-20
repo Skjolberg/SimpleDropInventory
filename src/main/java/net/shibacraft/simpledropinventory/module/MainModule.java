@@ -1,6 +1,7 @@
 package net.shibacraft.simpledropinventory.module;
 
 import net.shibacraft.simpledropinventory.SimpleDropInventory;
+import net.shibacraft.simpledropinventory.api.banner.Banner;
 import net.shibacraft.simpledropinventory.commands.Internal.CommandLoader;
 import net.shibacraft.simpledropinventory.files.FileManager;
 import net.shibacraft.simpledropinventory.api.loader.Loader;
@@ -15,10 +16,16 @@ public class MainModule implements Loader {
 
     @Override
     public void load() {
-        Loader loader = new FileManager(plugin);
+        Loader loader = new Banner(plugin);
+        loader.load();
+
+        loader = new FileManager(plugin);
         loader.load();
 
         loader = new CommandLoader(plugin);
+        loader.load();
+
+        loader = new EventsModule(plugin);
         loader.load();
     }
 
