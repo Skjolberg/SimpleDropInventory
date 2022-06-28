@@ -7,5 +7,4 @@ public interface Loader {
     void unload();
 
     void reload();
-
 }

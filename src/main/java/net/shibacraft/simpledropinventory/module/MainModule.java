@@ -1,6 +1,7 @@
 package net.shibacraft.simpledropinventory.module;
 
-import net.shibacraft.simpledropinventory.SimpleDropInventory;
+import net.shibacraft.simpledropinventory.api.analytics.MetricsProvider;
+import net.shibacraft.simpledropinventory.api.analytics.Updater;
 import net.shibacraft.simpledropinventory.api.banner.Banner;
 import net.shibacraft.simpledropinventory.commands.Internal.CommandLoader;
 import net.shibacraft.simpledropinventory.files.FileManager;
@@ -8,25 +9,27 @@ import net.shibacraft.simpledropinventory.api.loader.Loader;
 
 public class MainModule implements Loader {
 
-    private final SimpleDropInventory plugin;
-
-    public MainModule(SimpleDropInventory plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public void load() {
-        Loader loader = new Banner(plugin);
-        loader.load();
 
-        loader = new FileManager(plugin);
-        loader.load();
+        final Banner banner = new Banner();
+        banner.load();
 
-        loader = new CommandLoader(plugin);
-        loader.load();
+        final FileManager fileManager = new FileManager();
+        fileManager.load();
 
-        loader = new EventsModule(plugin);
-        loader.load();
+        final CommandLoader commandLoader = new CommandLoader();
+        commandLoader.load();
+
+        final EventsModule eventsModule = new EventsModule();
+        eventsModule.load();
+
+        final Updater updater = new Updater();
+        updater.load();
+
+        final MetricsProvider metrics = new MetricsProvider();
+        metrics.load();
+
     }
 
     @Override
@@ -38,4 +41,5 @@ public class MainModule implements Loader {
     public void reload() {
 
     }
+
 }

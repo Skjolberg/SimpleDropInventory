@@ -1,1 +1,2 @@
-
+# If the player has drop enabled by default when logging in to the server
+PlayerJoinDrop: true

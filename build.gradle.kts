@@ -3,8 +3,8 @@ plugins {
     id("com.github.johnrengelman.shadow") version ("7.1.2")
 }
 
-group = "net.shibacraft"
-version = "0.0.1-SNAPSHOT"
+group = "net.shibacraft.simpledropinventory"
+version = "0.0.3-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -16,17 +16,17 @@ repositories {
 
 dependencies {
     implementation("com.github.simplix-softworks:simplixstorage:3.2.4")
-    implementation("team.unnamed.common:commons-error:2.0.0-SNAPSHOT")
-    implementation("me.fixeddev:commandflow-bukkit:0.5.0-SNAPSHOT")
+    implementation("org.bstats:bstats-bukkit:3.0.0")
+    implementation("me.fixeddev:commandflow-bukkit:0.5.2")
     compileOnly("org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT")
-    compileOnly("org.projectlombok:lombok:1.18.22")
-    annotationProcessor("org.projectlombok:lombok:1.18.22")
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 
 tasks {
     java {
         toolchain {
-            languageVersion.set(JavaLanguageVersion.of(11))
+            languageVersion.set(JavaLanguageVersion.of(8))
         }
     }
     withType<JavaCompile> {

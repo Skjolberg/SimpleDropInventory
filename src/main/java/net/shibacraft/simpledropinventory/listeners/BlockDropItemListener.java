@@ -1,10 +1,9 @@
 package net.shibacraft.simpledropinventory.listeners;
 
-import de.leonhard.storage.Yaml;
 import lombok.Getter;
-import net.shibacraft.simpledropinventory.files.FileManager;
+import net.shibacraft.simpledropinventory.module.EventsModule;
 import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,37 +17,25 @@ import java.util.*;
 public class BlockDropItemListener implements Listener {
 
     @Getter
-    public static final Set<UUID> drop = new HashSet<>();
+    public static final Set<UUID> drop = EventsModule.getDrop();
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void blockDropItem(BlockDropItemEvent event) {
-
         Player p = event.getPlayer();
-        Location blockLocation = event.getBlock().getLocation();
-        List<Item> items = event.getItems();
 
-        if(drop.contains(p.getUniqueId())){
-            for (Item item : items) {
-                dropToInventory(item.getItemStack(), p, blockLocation);
+        if (drop.contains(p.getUniqueId())) {
+            Location blockLocation = event.getBlock().getLocation();
+            List<Item> items = event.getItems();
+            for (Item a : items) {
+                if (p.getInventory().firstEmpty() != -1) {
+                    event.getPlayer().getInventory().addItem(a.getItemStack());
+                } else {
+                    HashMap<Integer, ItemStack> res = p.getInventory().addItem(a.getItemStack());
+                    if (!res.isEmpty()) p.getWorld().dropItemNaturally(blockLocation, res.get(0));
+                }
             }
             event.setCancelled(true);
         }
-
     }
 
-    void dropToInventory(ItemStack item, Player player, Location blockLocation) {
-        ItemStack[] items = new ItemStack[1];
-        items[0] = item;
-
-        for (ItemStack drop : items) {
-            if (item != null && drop.getType() != Material.AIR) {
-                HashMap<Integer, ItemStack> res = player.getInventory().addItem(item);
-                for (ItemStack r : res.values()) {
-                    if (r.getType() == Material.AIR) continue;
-                    player.getWorld().dropItemNaturally(blockLocation, r);
-                }
-            }
-        }
-
-    }
 }

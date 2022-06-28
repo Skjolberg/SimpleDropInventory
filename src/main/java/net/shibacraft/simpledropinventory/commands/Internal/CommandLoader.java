@@ -16,11 +16,9 @@ import net.shibacraft.simpledropinventory.api.loader.Loader;
 public class CommandLoader implements Loader {
 
     private final CommandManager commandManager;
-    private final SimpleDropInventory plugin;
 
-    public CommandLoader(SimpleDropInventory plugin) {
-        this.plugin = plugin;
-        this.commandManager = new BukkitCommandManager(plugin.getName());
+    public CommandLoader() {
+        this.commandManager = new BukkitCommandManager(SimpleDropInventory.getPlugin().getName());
         commandManager.setTranslator(new DefaultTranslator(new CommandTranslatorProvider()));
     }
 
@@ -32,7 +30,7 @@ public class CommandLoader implements Loader {
 
         AnnotatedCommandTreeBuilder treeBuilder = new AnnotatedCommandTreeBuilderImpl(partInjector);
 
-        commandManager.registerCommands(treeBuilder.fromClass(new MainCommand(plugin)));
+        commandManager.registerCommands(treeBuilder.fromClass(new MainCommand()));
 
 
     }

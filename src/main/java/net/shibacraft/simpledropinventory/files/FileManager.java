@@ -17,20 +17,17 @@ import java.util.Set;
 
 public class FileManager implements Loader {
 
-    private final SimpleDropInventory plugin;
+    @Getter
+    public static FileManager fileManager;
+    private final SimpleDropInventory plugin = SimpleDropInventory.getPlugin();
 
     @Getter
     private static final Map<String, Yaml> filesYaml = new HashMap<>();
     private static final Set<String> filesCheck = new HashSet<>();
 
-    public FileManager(SimpleDropInventory plugin) {
-        this.plugin = plugin;
-    }
-
-
     @Override
     public void load() {
-
+        fileManager = this;
         filesCheck.add("Messages.yml");
         filesCheck.add("Config.yml");
         FileUtils.checkFiles(filesCheck);

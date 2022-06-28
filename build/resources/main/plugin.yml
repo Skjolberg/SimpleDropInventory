@@ -1,10 +1,13 @@
 name: SimpleDropInventory
 main: net.shibacraft.simpledropinventory.SimpleDropInventory
-version: '0.0.1-SNAPSHOT'
+version: '0.0.3-SNAPSHOT'
 author: SKJOLBERG
+api-version: 1.13
 permissions:
   sdi.admin:
     description: Allows all admin permissions
     default: op
+    children:
+      - sdi.use
   sdi.use:
-    description: Allows you to use the command to drop items to the inventory.
+    description: Allows you to use the command to drop items to the inventory

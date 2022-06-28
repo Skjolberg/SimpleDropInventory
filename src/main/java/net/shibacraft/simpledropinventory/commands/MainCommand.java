@@ -2,9 +2,7 @@ package net.shibacraft.simpledropinventory.commands;
 
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
-import me.fixeddev.commandflow.annotated.annotation.Required;
 import me.fixeddev.commandflow.bukkit.annotation.Sender;
-import net.shibacraft.simpledropinventory.SimpleDropInventory;
 import net.shibacraft.simpledropinventory.commands.Internal.CommandTranslatorProvider;
 import net.shibacraft.simpledropinventory.files.FileManager;
 import net.shibacraft.simpledropinventory.files.messages.Messages;
@@ -16,15 +14,10 @@ import java.util.Set;
 import java.util.UUID;
 
 @Command(names = {"sdi", "simpledropinventory"}, permission = "sdi.use", desc = "SimpleDropInventory main command")
-@Required
 public class MainCommand implements CommandClass {
 
     public static final Set<UUID> drop = BlockDropItemListener.getDrop();
-    private final FileManager fileManager;
-
-    public MainCommand(SimpleDropInventory plugin) {
-        fileManager = new FileManager(plugin);
-    }
+    private final FileManager fileManager = FileManager.getFileManager();
 
     @Command(names = "")
     public void onMainCommand(@Sender CommandSender sender) {
@@ -33,11 +26,9 @@ public class MainCommand implements CommandClass {
 
     @Command(names = "reload", permission = "sdi.admin")
     public void onReloadCommand(@Sender CommandSender sender) {
-
         fileManager.reload();
         CommandTranslatorProvider.commandTranslatorProvider.reload();
         sender.sendMessage(Messages.RELOAD.get());
-
     }
 
     @Command(names = "drop")
