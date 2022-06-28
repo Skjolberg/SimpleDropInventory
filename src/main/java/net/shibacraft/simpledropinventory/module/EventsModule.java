@@ -24,10 +24,10 @@ public class EventsModule implements Loader {
     @Override
     public void load() {
 
-        if(version >= 13){
+        if (version >= 13) {
             pluginManager.registerEvents(new BlockDropItemListener(), plugin);
         }
-        if(version < 13){
+        if (version < 13) {
             pluginManager.registerEvents(new BlockBreakListener(), plugin);
         }
         pluginManager.registerEvents(new PlayerJoinListener(), plugin);
@@ -43,7 +43,6 @@ public class EventsModule implements Loader {
     public void reload() {
 
     }
-
 
 
 }

@@ -23,8 +23,8 @@ public class PlayerJoinListener implements Listener {
 
         Player p = event.getPlayer();
 
-        if(config.getBoolean("PlayerJoinDrop")){
-            if(p.hasPermission("sdi.use")){
+        if (config.getBoolean("PlayerJoinDrop")) {
+            if (p.hasPermission("sdi.use")) {
                 drop.add(p.getUniqueId());
             }
         }
