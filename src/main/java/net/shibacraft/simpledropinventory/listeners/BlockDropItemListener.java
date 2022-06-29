@@ -1,9 +1,7 @@
 package net.shibacraft.simpledropinventory.listeners;
 
-import lombok.Getter;
-import net.shibacraft.simpledropinventory.module.EventsModule;
+import net.shibacraft.simpledropinventory.commands.MainCommand;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,11 +14,13 @@ import java.util.*;
 
 public class BlockDropItemListener implements Listener {
 
-    @Getter
-    public static final Set<UUID> drop = EventsModule.getDrop();
+    private final Set<UUID> drop = MainCommand.getDrop();
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void blockDropItem(BlockDropItemEvent event) {
+        String world = event.getPlayer().getWorld().getName();
+        if(UtilsListener.isWorldDisabled(world)) return;
+
         Player p = event.getPlayer();
 
         if (drop.contains(p.getUniqueId())) {

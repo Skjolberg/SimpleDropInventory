@@ -1,8 +1,8 @@
 package net.shibacraft.simpledropinventory.listeners;
 
 import de.leonhard.storage.Yaml;
+import net.shibacraft.simpledropinventory.commands.MainCommand;
 import net.shibacraft.simpledropinventory.files.FileManager;
-import net.shibacraft.simpledropinventory.module.EventsModule;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -15,12 +15,12 @@ import java.util.UUID;
 
 public class PlayerJoinListener implements Listener {
 
-    Yaml config = FileManager.getFilesYaml().get("Config");
-    public static final Set<UUID> drop = EventsModule.getDrop();
+    private final Set<UUID> drop = MainCommand.getDrop();
+    private Yaml config = FileManager.getFilesYaml().get("Config");
+
 
     @EventHandler(priority = EventPriority.LOWEST)
     public void playerJoin(PlayerJoinEvent event) {
-
         Player p = event.getPlayer();
 
         if (config.getBoolean("PlayerJoinDrop")) {
@@ -30,4 +30,9 @@ public class PlayerJoinListener implements Listener {
         }
 
     }
+
+    public void reload() {
+        config = FileManager.getFilesYaml().get("Config");
+    }
+
 }

@@ -10,8 +10,8 @@ import org.bstats.charts.SimplePie;
 public class MetricsProvider implements Loader {
 
 
-    Metrics metrics = new Metrics(SimpleDropInventory.getPlugin(), 15607);
-    Yaml config = FileManager.getFilesYaml().get("Config");
+    private final Metrics metrics = new Metrics(SimpleDropInventory.getPlugin(), 15607);
+    private final Yaml config = FileManager.getFilesYaml().get("Config");
 
     @Override
     public void load() {

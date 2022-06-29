@@ -3,8 +3,10 @@ plugins {
     id("com.github.johnrengelman.shadow") version ("7.1.2")
 }
 
+var libs = "net.shibacraft.simpleblockregen.api.libs"
+
 group = "net.shibacraft.simpledropinventory"
-version = "0.0.3-SNAPSHOT"
+version = "0.0.5-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -36,6 +38,9 @@ tasks {
         delete(file("${project.buildDir}"))
         archiveClassifier.set("")
         archiveFileName.set("${project.name}-${project.version}.jar")
+        relocate("me.fixeddev.commandflow", "$libs.cmdFlow")
+        relocate("org.bstats", "$libs.bStats")
+        relocate("com.github.simplix-softworks", "$libs.leonhardStorage")
         minimize()
     }
     build {
