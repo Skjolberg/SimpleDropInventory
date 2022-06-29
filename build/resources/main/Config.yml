@@ -1,10 +1,10 @@
 # In these worlds SDI will not work
-DisabledWorlds:
+Disabled-Worlds:
   - mine
   - lobby
 
 # If the player has drop enabled by default when logging in to the server
-PlayerJoinDrop: true
+Player-Join-Drop: true
 
 # If the experience is to be collected also as the blocks.
 # This option only works if the player has "/sdi drop" enabled.

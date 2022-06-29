@@ -8,8 +8,10 @@ import lombok.Getter;
 import net.shibacraft.simpledropinventory.SimpleDropInventory;
 import net.shibacraft.simpledropinventory.api.loader.Loader;
 import net.shibacraft.simpledropinventory.api.utils.FileUtils;
+import net.shibacraft.simpledropinventory.files.config.ConfigCore;
 import net.shibacraft.simpledropinventory.files.messages.Messages;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -36,8 +38,7 @@ public class FileManager implements Loader {
         filesYaml.put("Messages", new Yaml("Messages.yml", plugin.getDataFolder().getPath(), null,
                 ReloadSettings.INTELLIGENT, ConfigSettings.PRESERVE_COMMENTS, DataType.SORTED));
         Messages.load();
-        filesYaml.put("Config", new Yaml("Config.yml", plugin.getDataFolder().getPath(), null,
-                ReloadSettings.INTELLIGENT, ConfigSettings.PRESERVE_COMMENTS, DataType.SORTED));
+        filesYaml.put("Config", new ConfigCore(new File(plugin.getDataFolder().getPath(), "Config.yml")));
 
     }
 
