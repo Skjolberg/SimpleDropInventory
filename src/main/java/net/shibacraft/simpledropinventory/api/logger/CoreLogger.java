@@ -20,8 +20,4 @@ public class CoreLogger {
         Bukkit.getConsoleSender().sendMessage(TextColor.color(LOGGER_NAME + "&7 | &c" + message));
     }
 
-    public static void log(String message) {
-        Bukkit.getConsoleSender().sendMessage(TextColor.color(LOGGER_NAME + "&7 | &f" + message));
-    }
-
 }

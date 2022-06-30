@@ -1,4 +1,4 @@
-package net.shibacraft.simpledropinventory.api.utils;
+package net.shibacraft.simpledropinventory.files;
 
 import net.shibacraft.simpledropinventory.SimpleDropInventory;
 

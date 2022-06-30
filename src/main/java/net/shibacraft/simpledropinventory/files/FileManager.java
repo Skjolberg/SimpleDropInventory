@@ -7,7 +7,6 @@ import de.leonhard.storage.internal.settings.ReloadSettings;
 import lombok.Getter;
 import net.shibacraft.simpledropinventory.SimpleDropInventory;
 import net.shibacraft.simpledropinventory.api.loader.Loader;
-import net.shibacraft.simpledropinventory.api.utils.FileUtils;
 import net.shibacraft.simpledropinventory.files.config.ConfigCore;
 import net.shibacraft.simpledropinventory.files.messages.Messages;
 

@@ -54,9 +54,9 @@ public class Updater implements Loader, Listener {
             CoreLogger.warn("You are using a DEV version. Some functions may not be stable, be careful and use at your own risk.");
             CoreLogger.warn(" ");
         } else if (isLatest()) {
-            CoreLogger.log(" ");
-            CoreLogger.log("You are using the latest version: &e" + plugin.getDescription().getVersion());
-            CoreLogger.log(" ");
+            CoreLogger.info(" ");
+            CoreLogger.info("You are using the latest version: &e" + plugin.getDescription().getVersion());
+            CoreLogger.info(" ");
         } else {
             CoreLogger.warn(" ");
             CoreLogger.warn("A new version is available at:");
