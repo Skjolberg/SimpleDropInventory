@@ -15,7 +15,6 @@ public class MetricsProvider implements Loader {
 
     @Override
     public void load() {
-        metrics.addCustomChart(new SimplePie("disabled-worlds", () -> String.valueOf(config.getBoolean("Disabled-Worlds"))));
         metrics.addCustomChart(new SimplePie("player-join-drop", () -> String.valueOf(config.getBoolean("Player-Join-Drop"))));
         metrics.addCustomChart(new SimplePie("collect-experience", () -> String.valueOf(config.getBoolean("Collect-Experience"))));
     }
