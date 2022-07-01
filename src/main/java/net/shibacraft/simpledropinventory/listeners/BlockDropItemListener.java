@@ -21,6 +21,8 @@ public class BlockDropItemListener implements Listener {
         String world = event.getPlayer().getWorld().getName();
         if(UtilsListener.isWorldDisabled(world)) return;
 
+        if(!UtilsListener.isCollectDrops()) return;
+
         Player p = event.getPlayer();
 
         if (drop.contains(p.getUniqueId())) {

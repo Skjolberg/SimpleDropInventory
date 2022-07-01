@@ -12,6 +12,7 @@ public class MainModule implements Loader {
 
     @Getter
     private static MainModule mainModule;
+    private StorageModule storageModule;
     private FileManager fileManager;
     private EventsModule eventsModule;
 
@@ -24,6 +25,9 @@ public class MainModule implements Loader {
 
         fileManager = new FileManager();
         fileManager.load();
+
+        storageModule = new StorageModule();
+        storageModule.load();
 
         final CommandLoader commandLoader = new CommandLoader();
         commandLoader.load();
@@ -41,7 +45,9 @@ public class MainModule implements Loader {
 
     @Override
     public void unload() {
-
+        fileManager.unload();
+        storageModule.unload();
+        eventsModule.unload();
     }
 
     @Override

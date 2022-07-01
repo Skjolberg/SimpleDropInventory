@@ -17,8 +17,11 @@ public class ConfigCore extends Yaml {
                 ReloadSettings.INTELLIGENT, ConfigSettings.PRESERVE_COMMENTS, DataType.SORTED);
 
         this.setDefault("Disabled-Worlds", new ArrayList<>(Arrays.asList("mine", "lobby")));
-        this.setDefault("Player-Join-Drop", true);
+        this.setDefault("Player-Join-Drop", false);
+        this.setDefault("Save-PlayerData", true);
+        this.setDefault("Collect-Drops", true);
         this.setDefault("Collect-Experience", true);
+
 
     }
 

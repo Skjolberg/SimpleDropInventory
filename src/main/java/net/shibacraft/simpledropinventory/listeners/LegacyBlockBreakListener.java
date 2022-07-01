@@ -25,12 +25,15 @@ public class LegacyBlockBreakListener implements Listener {
         String world = event.getPlayer().getWorld().getName();
         if(UtilsListener.isWorldDisabled(world)) return;
 
+        if(!UtilsListener.isCollectDrops()) return;
+
         Player p = event.getPlayer();
 
         if (drop.contains(p.getUniqueId())) {
             Block b = event.getBlock();
             Location blockLocation = b.getLocation();
             Collection<ItemStack> items = b.getDrops();
+
             for (ItemStack item : items) {
                 if (p.getInventory().firstEmpty() != -1) {
                     p.getInventory().addItem(item);

@@ -1,11 +1,11 @@
 package net.shibacraft.simpledropinventory.module;
 
+import de.leonhard.storage.Yaml;
+import lombok.Getter;
 import net.shibacraft.simpledropinventory.SimpleDropInventory;
 import net.shibacraft.simpledropinventory.api.loader.Loader;
-import net.shibacraft.simpledropinventory.listeners.BlockBreakListener;
-import net.shibacraft.simpledropinventory.listeners.LegacyBlockBreakListener;
-import net.shibacraft.simpledropinventory.listeners.BlockDropItemListener;
-import net.shibacraft.simpledropinventory.listeners.PlayerJoinListener;
+import net.shibacraft.simpledropinventory.files.FileManager;
+import net.shibacraft.simpledropinventory.listeners.*;
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.PluginManager;
 
@@ -15,19 +15,23 @@ public class EventsModule implements Loader {
     private final PluginManager pluginManager = SimpleDropInventory.getPlugin().getServer().getPluginManager();
     private final int version = SimpleDropInventory.getVERSION();
     private final BlockBreakListener blockBreakListener = new BlockBreakListener();
-    private final PlayerJoinListener playerJoinListener = new PlayerJoinListener();
-
+    private final Yaml config = FileManager.getFilesYaml().get("Config");
 
     @Override
     public void load() {
 
         if (version >= 13) {
-            pluginManager.registerEvents(new BlockDropItemListener(), plugin);
+            BlockDropItemListener blockDropItemListener = new BlockDropItemListener();
+            pluginManager.registerEvents(blockDropItemListener, plugin);
         }
         if (version < 13) {
-            pluginManager.registerEvents(new LegacyBlockBreakListener(), plugin);
+            LegacyBlockBreakListener legacyBlockBreakListener = new LegacyBlockBreakListener();
+            pluginManager.registerEvents(legacyBlockBreakListener, plugin);
         }
-        pluginManager.registerEvents(playerJoinListener, plugin);
+        if (config.getBoolean("Player-Join-Drop")) {
+            PlayerJoinListener playerJoinListener = new PlayerJoinListener();
+            pluginManager.registerEvents(playerJoinListener, plugin);
+        }
         pluginManager.registerEvents(blockBreakListener, plugin);
 
     }
@@ -39,8 +43,7 @@ public class EventsModule implements Loader {
 
     @Override
     public void reload() {
-        playerJoinListener.reload();
-        blockBreakListener.reload();
+        UtilsListener.reload();
     }
 
 
