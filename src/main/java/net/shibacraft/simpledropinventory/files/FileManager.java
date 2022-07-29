@@ -44,7 +44,6 @@ public class FileManager implements Loader {
     @Override
     public void unload() {
         filesYaml.clear();
-        filesCheck.clear();
     }
 
     @Override

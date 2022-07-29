@@ -1,4 +1,4 @@
-PREFIX: "&8[&dSimpleDropInventory&8]&r "
+PREFIX: "&8[&dSimpleDropInventory&8] &r"
 INVALID_ARGUMENT: "&cThe argument %s is Invalid."
 NO_PERMISSION: "&cYou do not have permission to do this."
 RELOAD: "&aPlugin reloaded!"

@@ -15,7 +15,6 @@ public class PlayerJoinListener implements Listener {
 
     private final Set<UUID> drop = MainCommand.getDrop();
 
-
     @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
     public void playerJoin(PlayerJoinEvent event) {
         Player p = event.getPlayer();

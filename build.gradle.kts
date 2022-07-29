@@ -6,7 +6,7 @@ plugins {
 var libs = "net.shibacraft.simpleblockregen.api.libs"
 
 group = "net.shibacraft.simpledropinventory"
-version = "0.0.7-SNAPSHOT"
+version = "0.0.8-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -20,7 +20,7 @@ dependencies {
     implementation("com.github.simplix-softworks:simplixstorage:3.2.4")
     implementation("org.bstats:bstats-bukkit:3.0.0")
     implementation("me.fixeddev:commandflow-bukkit:0.5.2")
-    compileOnly("org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:1.19.1-R0.1-SNAPSHOT")
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
 }

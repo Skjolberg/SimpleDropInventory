@@ -1,29 +1,27 @@
 package net.shibacraft.simpledropinventory.listeners;
 
 import de.leonhard.storage.Yaml;
+import lombok.experimental.UtilityClass;
 import net.shibacraft.simpledropinventory.files.FileManager;
 
 import java.util.List;
 
+@UtilityClass
 public class UtilsListener {
 
-    private static Yaml config = FileManager.getFilesYaml().get("Config");
+    private final Yaml config = FileManager.getFilesYaml().get("Config");
 
-    public static boolean isWorldDisabled(String world) {
-        List<String> worlds = FileManager.getFilesYaml().get("Config").getStringList("Disabled-Worlds");
+    public boolean isWorldDisabled(String world) {
+        List<String> worlds = config.getStringList("Disabled-Worlds");
         return worlds.contains(world);
     }
 
-    public static boolean isCollectExperience() {
+    public boolean isCollectExperience() {
         return config.getBoolean("Collect-Experience");
     }
 
-    public static boolean isCollectDrops() {
+    public boolean isCollectDrops() {
         return config.getBoolean("Collect-Drops");
-    }
-
-    public static void reload() {
-        config = FileManager.getFilesYaml().get("Config");
     }
 
 

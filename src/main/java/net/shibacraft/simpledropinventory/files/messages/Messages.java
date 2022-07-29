@@ -9,7 +9,7 @@ import net.shibacraft.simpledropinventory.files.FileManager;
 
 public enum Messages {
 
-    PREFIX("PREFIX", "&8[&dSimpleDropInventory&8]&r "),
+    PREFIX("PREFIX", "&8[&dSimpleDropInventory&8] &r"),
     INVALID_ARGUMENT("INVALID_ARGUMENT", "&cThe argument %s is Invalid."),
     NO_PERMISSION("NO_PERMISSION", "&cYou do not have permission to do this."),
     RELOAD("RELOAD", "&aPlugin reloaded!"),

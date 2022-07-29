@@ -1,7 +1,6 @@
 package net.shibacraft.simpledropinventory.module;
 
 import de.leonhard.storage.Yaml;
-import lombok.Getter;
 import net.shibacraft.simpledropinventory.SimpleDropInventory;
 import net.shibacraft.simpledropinventory.api.loader.Loader;
 import net.shibacraft.simpledropinventory.files.FileManager;
@@ -43,7 +42,7 @@ public class EventsModule implements Loader {
 
     @Override
     public void reload() {
-        UtilsListener.reload();
+
     }
 
 

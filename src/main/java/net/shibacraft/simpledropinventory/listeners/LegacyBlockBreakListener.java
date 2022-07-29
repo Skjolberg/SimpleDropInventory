@@ -17,8 +17,7 @@ import java.util.*;
 
 public class LegacyBlockBreakListener implements Listener {
 
-    @Getter
-    public static final Set<UUID> drop = MainCommand.getDrop();
+    private final Set<UUID> drop = MainCommand.getDrop();
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void blockDropItem(BlockBreakEvent event) {

@@ -10,4 +10,5 @@ permissions:
     children:
       - sdi.use
   sdi.use:
+    default: false
     description: Allows you to use the command to drop items to the inventory
