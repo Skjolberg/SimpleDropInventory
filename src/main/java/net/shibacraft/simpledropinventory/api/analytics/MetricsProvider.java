@@ -9,12 +9,15 @@ import org.bstats.charts.SimplePie;
 
 public class MetricsProvider implements Loader {
 
+    private final Metrics metrics;
 
-    private final Metrics metrics = new Metrics(SimpleDropInventory.getPlugin(), 15607);
-    private final Yaml config = FileManager.getFilesYaml().get("Config");
+    public MetricsProvider(SimpleDropInventory plugin){
+        metrics = new Metrics(plugin, 15607);
+    }
 
     @Override
     public void load() {
+        final Yaml config = FileManager.getFilesYaml().get("Config");
         metrics.addCustomChart(new SimplePie("player-join-drop", () -> String.valueOf(config.getBoolean("Player-Join-Drop"))));
         metrics.addCustomChart(new SimplePie("save-playerdata", () -> String.valueOf(config.getBoolean("Save-PlayerData"))));
         metrics.addCustomChart(new SimplePie("collect-drops", () -> String.valueOf(config.getBoolean("Collect-Drops"))));

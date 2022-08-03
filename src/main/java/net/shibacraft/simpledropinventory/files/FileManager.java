@@ -20,11 +20,15 @@ public class FileManager implements Loader {
 
     @Getter
     public static FileManager fileManager;
-    private final SimpleDropInventory plugin = SimpleDropInventory.getPlugin();
+    private final SimpleDropInventory plugin;
 
     @Getter
-    private static final Map<String, Yaml> filesYaml = new HashMap<>();
-    private static final Set<String> filesCheck = new HashSet<>();
+    public static final Map<String, Yaml> filesYaml = new HashMap<>();
+    private final Set<String> filesCheck = new HashSet<>();
+
+    public FileManager(SimpleDropInventory plugin){
+        this.plugin = plugin;
+    }
 
     @Override
     public void load() {

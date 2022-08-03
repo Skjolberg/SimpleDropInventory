@@ -21,7 +21,7 @@ public class SimpleDropInventory extends JavaPlugin {
         String[] version = pack.substring(pack.lastIndexOf('.') + 1).split("_");
         VERSION = Integer.parseInt(version[1]);
 
-        mainModule = new MainModule();
+        mainModule = new MainModule(this);
         mainModule.load();
     }
 

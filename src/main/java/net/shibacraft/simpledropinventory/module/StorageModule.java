@@ -8,9 +8,12 @@ import net.shibacraft.simpledropinventory.files.playerData.PlayerDataManager;
 
 public class StorageModule implements Loader {
 
-    @Getter
-    public static PlayerDataManager playerDataManager;
-    private final Yaml config = FileManager.getFilesYaml().get("Config");
+    private PlayerDataManager playerDataManager;
+    private final Yaml config;
+
+    public StorageModule(){
+        config = FileManager.getFilesYaml().get("Config");
+    }
 
     @Override
     public void load() {

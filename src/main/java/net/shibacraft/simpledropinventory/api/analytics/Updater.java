@@ -16,7 +16,11 @@ import java.net.URLConnection;
 
 public class Updater implements Loader, Listener {
 
-    private final SimpleDropInventory plugin = SimpleDropInventory.getPlugin();
+    private final SimpleDropInventory plugin;
+
+    public Updater(SimpleDropInventory plugin){
+        this.plugin = plugin;
+    }
 
     @Override
     public void load() {

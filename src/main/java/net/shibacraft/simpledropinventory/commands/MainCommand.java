@@ -19,7 +19,11 @@ public class MainCommand implements CommandClass {
 
     @Getter
     public static final Set<UUID> drop = new HashSet<>();
-    private final MainModule mainModule = MainModule.getMainModule();
+    private final MainModule mainModule;
+
+    public MainCommand(){
+        mainModule = MainModule.getMainModule();
+    }
 
     @Command(names = "")
     public void onMainCommand(@Sender CommandSender sender) {
@@ -29,7 +33,6 @@ public class MainCommand implements CommandClass {
     @Command(names = "reload", permission = "sdi.admin")
     public void onReloadCommand(@Sender CommandSender sender) {
         mainModule.reload();
-        CommandTranslatorProvider.commandTranslatorProvider.reload();
         sender.sendMessage(Messages.RELOAD.get());
     }
 

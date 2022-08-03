@@ -10,11 +10,19 @@ import org.bukkit.plugin.PluginManager;
 
 public class EventsModule implements Loader {
 
-    private final SimpleDropInventory plugin = SimpleDropInventory.getPlugin();
-    private final PluginManager pluginManager = SimpleDropInventory.getPlugin().getServer().getPluginManager();
-    private final int version = SimpleDropInventory.getVERSION();
-    private final BlockBreakListener blockBreakListener = new BlockBreakListener();
-    private final Yaml config = FileManager.getFilesYaml().get("Config");
+    private final SimpleDropInventory plugin;
+    private final PluginManager pluginManager;
+    private final int version;
+    private final BlockBreakListener blockBreakListener;
+    private final Yaml config;
+
+    public EventsModule(SimpleDropInventory plugin){
+        this.plugin = plugin;
+        this.pluginManager = SimpleDropInventory.getPlugin().getServer().getPluginManager();
+        this.version = SimpleDropInventory.getVERSION();
+        this.blockBreakListener = new BlockBreakListener();
+        this.config = FileManager.getFilesYaml().get("Config");
+    }
 
     @Override
     public void load() {
@@ -22,11 +30,11 @@ public class EventsModule implements Loader {
         if (version >= 13) {
             BlockDropItemListener blockDropItemListener = new BlockDropItemListener();
             pluginManager.registerEvents(blockDropItemListener, plugin);
-        }
-        if (version < 13) {
+        } else {
             LegacyBlockBreakListener legacyBlockBreakListener = new LegacyBlockBreakListener();
             pluginManager.registerEvents(legacyBlockBreakListener, plugin);
         }
+
         if (config.getBoolean("Player-Join-Drop")) {
             PlayerJoinListener playerJoinListener = new PlayerJoinListener();
             pluginManager.registerEvents(playerJoinListener, plugin);

@@ -19,12 +19,13 @@ import static org.bukkit.Bukkit.getServer;
 
 public class PlayerDataManager implements Listener, Loader {
 
-    private final SimpleDropInventory plugin = SimpleDropInventory.getPlugin();
+    private final SimpleDropInventory plugin;
     private Json json;
-    private final Set<UUID> drop = MainCommand.getDrop();
-
+    private final Set<UUID> drop;
 
     public PlayerDataManager(){
+        plugin = SimpleDropInventory.getPlugin();
+        drop = MainCommand.getDrop();
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
