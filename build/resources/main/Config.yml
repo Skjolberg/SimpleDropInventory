@@ -1,0 +1,28 @@
+# In these worlds SDI will not work
+Disabled-Worlds:
+  - mine
+  - lobby
+
+# This option allows to have the /sdi drop enabled on the player at all times, the player will not be able to disable it.
+# For this function to take effect, the user must have the sdi.use permission.
+Always-enabled: false
+
+# If the player has drop enabled by default when logging in to the server.
+# You can only enable Player-Join-Drop or Save-PlayerData, as both can overlap.
+Player-Join-Drop: false
+
+# Basically what it does is to save in json files if the player had enabled or not the drop to the inventory, so you
+# don't have to enable it every time you login to the server. This is appreciated by many players.
+# This only works when the player join the server and when the server shuts down. The performance is fast.
+# You can only enable Player-Join-Drop or Save-PlayerData, as both can overlap.
+Save-PlayerData: true
+
+# If the blocks is to be collected.
+# This option only works if the player has "/sdi drop" enabled.
+Collect-Drops: true
+
+# If the experience is to be collected also as the blocks.
+# This option only works if the player has "/sdi drop" enabled.
+Collect-Experience: true
+
+

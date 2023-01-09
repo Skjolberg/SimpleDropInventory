@@ -6,7 +6,7 @@ plugins {
 val libs = "net.shibacraft.simpledropinventory.api.libs"
 
 group = "net.shibacraft.simpledropinventory"
-version = "0.0.9-SNAPSHOT"
+version = "0.1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
