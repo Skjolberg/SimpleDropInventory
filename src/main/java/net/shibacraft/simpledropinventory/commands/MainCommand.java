@@ -1,10 +1,12 @@
 package net.shibacraft.simpledropinventory.commands;
 
+import de.leonhard.storage.Yaml;
 import lombok.Getter;
 import me.fixeddev.commandflow.annotated.CommandClass;
 import me.fixeddev.commandflow.annotated.annotation.Command;
 import me.fixeddev.commandflow.bukkit.annotation.Sender;
 import net.shibacraft.simpledropinventory.commands.Internal.CommandTranslatorProvider;
+import net.shibacraft.simpledropinventory.files.FileManager;
 import net.shibacraft.simpledropinventory.files.messages.Messages;
 import net.shibacraft.simpledropinventory.module.MainModule;
 import org.bukkit.command.CommandSender;
@@ -19,6 +21,7 @@ public class MainCommand implements CommandClass {
 
     @Getter
     public static final Set<UUID> drop = new HashSet<>();
+    private final Yaml config = FileManager.getFilesYaml().get("Config");
     private final MainModule mainModule;
 
     public MainCommand(){
@@ -38,13 +41,16 @@ public class MainCommand implements CommandClass {
 
     @Command(names = "drop")
     public void onBypassCommand(@Sender Player player) {
-
-        if (drop.contains(player.getUniqueId())) {
-            drop.remove(player.getUniqueId());
-            player.sendMessage(Messages.DROP_OFF.get());
+        if (!config.getBoolean("Always-enabled")) {
+            if (drop.contains(player.getUniqueId())) {
+                drop.remove(player.getUniqueId());
+                player.sendMessage(Messages.DROP_OFF.get());
+            } else {
+                drop.add(player.getUniqueId());
+                player.sendMessage(Messages.DROP_ON.get());
+            }
         } else {
-            drop.add(player.getUniqueId());
-            player.sendMessage(Messages.DROP_ON.get());
+            player.sendMessage(Messages.ALWAYS_ENABLED.get());
         }
 
     }

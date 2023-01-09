@@ -3,6 +3,10 @@ Disabled-Worlds:
   - mine
   - lobby
 
+# This option allows to have the /sdi drop enabled on the player at all times, the player will not be able to disable it.
+# For this function to take effect, the user must have the sdi.use permission.
+Always-enabled: false
+
 # If the player has drop enabled by default when logging in to the server.
 # You can only enable Player-Join-Drop or Save-PlayerData, as both can overlap.
 Player-Join-Drop: false

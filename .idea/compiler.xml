@@ -11,6 +11,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
+      <module name="SimpleTest.main" target="8" />
+      <module name="SimpleTest.test" target="8" />
       <module name="Spigot-Default.main" target="8" />
       <module name="Spigot-Default.test" target="8" />
     </bytecodeTargetLevel>

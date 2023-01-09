@@ -1,6 +1,8 @@
 package net.shibacraft.simpledropinventory.listeners;
 
+import de.leonhard.storage.Yaml;
 import net.shibacraft.simpledropinventory.commands.MainCommand;
+import net.shibacraft.simpledropinventory.files.FileManager;
 import org.bukkit.Location;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
@@ -15,17 +17,18 @@ import java.util.*;
 public class BlockDropItemListener implements Listener {
 
     private final Set<UUID> drop = MainCommand.getDrop();
+    private final Yaml config = FileManager.getFilesYaml().get("Config");
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void blockDropItem(BlockDropItemEvent event) {
         String world = event.getPlayer().getWorld().getName();
         if(UtilsListener.isWorldDisabled(world)) return;
 
-        if(!UtilsListener.isCollectDrops()) return;
+        if(UtilsListener.isCollectDropsDisabled()) return;
 
         Player p = event.getPlayer();
 
-        if (drop.contains(p.getUniqueId())) {
+        if (drop.contains(p.getUniqueId()) || config.getBoolean("Always-enabled") && p.hasPermission("sdi.use")) {
             Location blockLocation = event.getBlock().getLocation();
             List<Item> items = event.getItems();
             for (Item a : items) {

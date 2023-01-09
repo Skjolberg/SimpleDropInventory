@@ -1,8 +1,9 @@
 package net.shibacraft.simpledropinventory.listeners;
 
-import lombok.Getter;
+import de.leonhard.storage.Yaml;
 import net.shibacraft.simpledropinventory.SimpleDropInventory;
 import net.shibacraft.simpledropinventory.commands.MainCommand;
+import net.shibacraft.simpledropinventory.files.FileManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -18,17 +19,18 @@ import java.util.*;
 public class LegacyBlockBreakListener implements Listener {
 
     private final Set<UUID> drop = MainCommand.getDrop();
+    private final Yaml config = FileManager.getFilesYaml().get("Config");
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void blockDropItem(BlockBreakEvent event) {
         String world = event.getPlayer().getWorld().getName();
         if(UtilsListener.isWorldDisabled(world)) return;
 
-        if(!UtilsListener.isCollectDrops()) return;
+        if(UtilsListener.isCollectDropsDisabled()) return;
 
         Player p = event.getPlayer();
 
-        if (drop.contains(p.getUniqueId())) {
+        if (drop.contains(p.getUniqueId()) || config.getBoolean("Always-enabled") && p.hasPermission("sdi.use")) {
             Block b = event.getBlock();
             Location blockLocation = b.getLocation();
             Collection<ItemStack> items = b.getDrops();

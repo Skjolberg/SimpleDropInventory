@@ -16,6 +16,7 @@ public class ConfigCore extends Yaml {
         super(yaml.getName(), SimpleDropInventory.getPlugin().getDataFolder().getPath(), null,
                 ReloadSettings.INTELLIGENT, ConfigSettings.PRESERVE_COMMENTS, DataType.SORTED);
 
+        this.setDefault("Always-enabled", false);
         this.setDefault("Disabled-Worlds", new ArrayList<>(Arrays.asList("mine", "lobby")));
         this.setDefault("Player-Join-Drop", false);
         this.setDefault("Save-PlayerData", true);

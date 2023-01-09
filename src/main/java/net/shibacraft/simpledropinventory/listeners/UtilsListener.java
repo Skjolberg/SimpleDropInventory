@@ -20,8 +20,8 @@ public class UtilsListener {
         return config.getBoolean("Collect-Experience");
     }
 
-    public boolean isCollectDrops() {
-        return config.getBoolean("Collect-Drops");
+    public boolean isCollectDropsDisabled() {
+        return !config.getBoolean("Collect-Drops");
     }
 
 

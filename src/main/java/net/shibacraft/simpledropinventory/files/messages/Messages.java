@@ -14,7 +14,9 @@ public enum Messages {
     NO_PERMISSION("NO_PERMISSION", "&cYou do not have permission to do this."),
     RELOAD("RELOAD", "&aPlugin reloaded!"),
     DROP_ON("DROP_ON", "&aYou will now receive the items in your inventory!"),
-    DROP_OFF("DROP_OFF", "&cYou will not receive the items in the inventory!");
+    DROP_OFF("DROP_OFF", "&cYou will not receive the items in the inventory!"),
+    ALWAYS_ENABLED("ALWAYS_ENABLED", "&cYou cannot enable or disable this feature as it is always enabled " +
+            "on this server.");
 
     @Getter
     private final String path;

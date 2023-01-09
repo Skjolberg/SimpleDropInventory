@@ -16,7 +16,7 @@ public class EventsModule implements Loader {
     private final BlockBreakListener blockBreakListener;
     private final Yaml config;
 
-    public EventsModule(SimpleDropInventory plugin){
+    public EventsModule(SimpleDropInventory plugin) {
         this.plugin = plugin;
         this.pluginManager = SimpleDropInventory.getPlugin().getServer().getPluginManager();
         this.version = SimpleDropInventory.getVERSION();
@@ -35,10 +35,9 @@ public class EventsModule implements Loader {
             pluginManager.registerEvents(legacyBlockBreakListener, plugin);
         }
 
-        if (config.getBoolean("Player-Join-Drop")) {
-            PlayerJoinListener playerJoinListener = new PlayerJoinListener();
-            pluginManager.registerEvents(playerJoinListener, plugin);
-        }
+        PlayerJoinListener playerJoinListener = new PlayerJoinListener();
+        pluginManager.registerEvents(playerJoinListener, plugin);
+
         pluginManager.registerEvents(blockBreakListener, plugin);
 
     }
